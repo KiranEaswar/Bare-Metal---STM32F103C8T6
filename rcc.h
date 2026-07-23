@@ -86,6 +86,12 @@ typedef enum{
 #define WWDGEN         (1 << 11)
 #define SPI2           (1 << 14)
 #define SPI3           (1 << 15)
+#define USART2EN       (1 << 17)
+#define USART3EN       (1 << 18)
+#define USART4EN       (1 << 19)
+#define USART5EN       (1 << 20)
+#define I2C1EN         (1 << 21)
+#define I2C2EN         (1 << 22)
 
 //----------------------------------APB2ENR bits
 #define AFIO           (1 << 0)

@@ -63,8 +63,7 @@ typedef struct {
 //----------------------------------Defines and Enums for ease of use
 
 
-//----------------------------------Function Definitions
-// Init
+//----------------------------------Function Declaration
 void I2C_Init(uint8_t bus, uint8_t freq, uint16_t ccr, uint8_t trise);
 void I2C_Start(uint8_t bus);
 void I2C_Stop(uint8_t bus);
@@ -76,10 +75,4 @@ uint8_t I2C_Read(uint8_t bus, uint8_t addr, uint8_t reg);
 void I2C_WriteBuffer(uint8_t bus, uint8_t addr, uint8_t ctrl, uint8_t *buf, uint16_t len);
 
 //----------------------------------End of Header
-#endif uint16_t ccr, uint8_T trise);
-void I2C_WriteByte(uint8_t data);
-uint8_t I2C_ReadByte();
-
-
-//----------------------------------End of Header
-#endif
+#endif 
