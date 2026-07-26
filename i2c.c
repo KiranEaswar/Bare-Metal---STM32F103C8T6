@@ -11,6 +11,7 @@ static I2C_TypeDef* I2C_Get(uint8_t bus){
     switch(bus){
         case 1: return I2C1_BASE;
         case 2: return I2C2_BASE;
+        default: return 0;
     }
 }
 
@@ -116,7 +117,6 @@ void I2C_ReadBuffer(uint8_t bus, uint8_t addr, uint8_t reg, uint8_t *buf, uint16
 }
 
 void I2C_WriteBuffer(uint8_t bus, uint8_t addr, uint8_t ctrl, uint8_t *buf, uint16_t len){
-    I2C_TypeDef* I2C = I2C_Get(bus);
     I2C_SendStart(bus);
     I2C_WriteAddr(bus, addr, 0);
     I2C_ClearAddr(bus);
