@@ -29,12 +29,6 @@ static const uint8_t init[] = {
 
 
 //----------------------------------Function Definitions
-void SSD1306_SetType(uint8_t width, uint8_t height){
-    _width = width;
-    _height = height;
-    _pages = height / 8;
-}
-
 void SSD1306_Init(uint8_t bus){
     I2C_WriteBuffer(bus, SSD1306_ADDR, SSD1306_CTRL_CMD, init, sizeof(init));
 }
