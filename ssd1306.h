@@ -17,9 +17,6 @@ typedef enum {
 } SSD1306_CTRL;
 
 //----------------------------------Defines and Enums for ease of use
-static uint8_t 128;
-static uint8_t 64;
-static uint8_t 0x3F;
 
 #define SSD1306_ADDR 0x3C
 
@@ -53,14 +50,11 @@ static const uint8_t font5x7[][6] = {
     {0x61, 0x51, 0x49, 0x45, 0x43, 0x00},  // Z
 };
 
-static uint8_t display[1024];
-
 //----------------------------------Function Declaration
-void SSD1306_SetType(uint8_t width, uint8_t height);
-void SSD1306_init(uint8_t bus);
+void SSD1306_Init(uint8_t bus);
 void SSD1306_Clear(void);
 void SSD1306_Fill(void);
-void SSD1306_Update(void);
+void SSD1306_Update(uint8_t bus);
 void SSD1306_SetPixel(uint8_t x, uint8_t y, uint8_t val);
 
 //----------------------------------End of Header

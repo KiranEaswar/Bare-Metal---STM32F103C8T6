@@ -54,8 +54,9 @@ void I2C_WriteAddr(uint8_t bus, uint8_t addr, uint8_t rw){
 
 void I2C_WriteByte(uint8_t bus, uint8_t data){
     I2C_TypeDef* I2C = I2C_Get(bus);
-    I2C->DR = (data << 0);
-    while(!((I2C->SR1) & (1 << 7)));
+
+    while(!(I2C->SR1 & (1 << 7)));   // Wait TXE
+    I2C->DR = data;
 }
 
 uint8_t I2C_ReadByte(uint8_t bus, uint8_t ack){
