@@ -1,16 +1,10 @@
 //----------------------------------Description
-// @file    ssd1306.c
+// @file    spi.c
 // @author  Kiran
-// @desc    SSD1306 Driver
+// @desc    SPI Driver
 
 //----------------------------------Libraries
-#include "ssd1306.h"
-#include "i2c.h"
- 
-
-
-//----------------------------------Display Init Sequence
-static uint8_t display[1024];
+#include "spi.h"
 
 //----------------------------------Static Functions
 
