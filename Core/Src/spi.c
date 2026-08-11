@@ -52,10 +52,9 @@ void SPI_Transmit(uint8_t bus, const uint8_t *buf, uint16_t len){
     for (uint16_t i = 0; i < len; i++){
         while (!((SPI->SR) & (1 << 1)));
         SPI->DR = buf[i];
-        while (!(SPI->SR & (1 << 0))); 
-        (void)SPI->DR;
     }
     while (SPI->SR & (1 << 7));
+    (void)SPI->DR;
 }
 
 void SPI_Transfer(uint8_t bus, const uint8_t *tx, uint8_t *rx, uint16_t len){

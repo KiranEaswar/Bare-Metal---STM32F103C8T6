@@ -1,17 +1,13 @@
 CC = arm-none-eabi-gcc
-CFLAGS = -c -O0 -mcpu=cortex-m3 -mthumb -Wall -fmessage-length=0
-LDFLAGS = -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -T./STM32F103.ld
-OBJS = core.o main.o rcc.o gpio.o tim.o flash.o i2c.o ssd1306.o
+CFLAGS = -c -O0 -mcpu=cortex-m3 -mthumb -Wall -fmessage-length=0 -ICore/Inc
+LDFLAGS = -mcpu=cortex-m3 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -T./Linker/STM32F103.ld
+
+SRCS = $(wildcard Core/Src/*.c)
+OBJS = $(SRCS:Core/Src/%.c=%.o) core.o
 
 build:
-	$(CC) -x assembler-with-cpp $(CFLAGS) core.S -o core.o
-	$(CC) $(CFLAGS) main.c -o main.o
-	$(CC) $(CFLAGS) rcc.c -o rcc.o
-	$(CC) $(CFLAGS) gpio.c -o gpio.o
-	$(CC) $(CFLAGS) tim.c -o tim.o
-	$(CC) $(CFLAGS) flash.c -o flash.o
-	$(CC) $(CFLAGS) i2c.c -o i2c.o
-	$(CC) $(CFLAGS) ssd1306.c -o ssd1306.o
+	$(CC) -x assembler-with-cpp $(CFLAGS) Startup/core.S -o core.o
+	$(foreach src, $(SRCS), $(CC) $(CFLAGS) $(src) -o $(notdir $(src:.c=.o));)
 	$(CC) $(OBJS) $(LDFLAGS) -o main.elf
 	arm-none-eabi-objcopy -O binary main.elf main.bin
 
